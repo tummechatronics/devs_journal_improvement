@@ -1,0 +1,121 @@
+# RE-learn to be an Engineer
+Asciidoctor version: {asciidoctor-version}
+:toc:
+:toc: preamble
+:toc-title: Learning days of an Engineer 
+:toclevels: 4
+:sectnums:
+
+//Configuration stuff
+:source-highlighter: coderay
+:coderay-linenums-mode: inline
+
+I'm aiming with this journal not only to improve my knowledge about data structures and algorithm using python but also to better translate mathematical models like econometrics, and robotics. I'm gonna expend at least 4 hours 5 days per week between reading, coding and updating this journal
+
+
+Disclaimer : You might find stuff in Spanish and German. 
+
+
+## Day 1 21-02-2025
+
+I start with this book **grooking 
+Artificial Intelligence Algorithms by Rishal Hurbans** with focus on algorithms
+
+### What I read
+
+#### Chapter 2 search Fundamentals
+
+_Refreshing Big O Notation_ author implies:
+
+* O(n!)
+* O(2^n)
+* O(n²)
+* O(n log n)
+* O(n)
+* O(log n)
+* O(1) 
+
+
+Data structure:
+
+* Array -> Research required 
+* Stack -> Research required
+* Queue -> Research required
+* Linked List -> Research required
+* Graph -> Planing and searching
+* Tree -> Planing and searching
+
+##### Graphs 
+    have _edge_(E), _Node_ (N) / _Vertex_ (V)
+
+Edge(E) connect nodes (N) / Vertex -> easy 
+
+
+-> TODO: add graph
+[%linenums,Python]
+----
+# Array of arrays
+[ 
+    [a,f],
+    [a,c],
+    [f,b],
+    [c,d],
+    [b,g],
+    [g,d],
+    [d,e],
+    [e,h]
+]
+----
+Adjacency Matrix are also a good way to represent it
+
+##### Tree
+
+Like in consulting tree represents a hierarchy of values / objects. 
+**char of Trees:**
+
+* Root node
+* Edges
+* Children
+* Leaf nodes
+* depth
+* height
+* degree -> #children a node has 
+
+A Tree have a root node which can have children. iF children have children -> Parent node else leaf nodes
+
+* Depth-first search (DFS): explores a specific path from start until it finds a goal at the utmost depth
+
+* Breadth-first search (BFS): explores all options at specific depth before moving to options deeper in the tree
+** BFS works great with FIFO because we need a queue to keep track of the nodes that we have to visit and from the nodes that we already visited.
+** Depth levels needs to be tracked
+
+EG:
+[%linenums,Python]
+----
+# Example of a tree with height 5
+[ Sequence
+    [A]
+    [BED]
+    B[CL];E[FN];D[IO]
+    C[DM];F[G];I[J];O[P]
+    G[H];J[KQ]
+]
+
+
+----
+
+
+The entire point of search algorithms is to search or generate these trees iteratively. Generating trees upfront is inefficient -> computationally expensive
+
+
+
+### My Thoughts about it
+
+Data and Information aren't the same while data means "raw facts", information requires context and therefore meaning
+
+I'm not done with the chapter. I need to implement both algos
+
+BFS can be used to find the shortest path to a point. Supply chain there are already some equations for it.
+In robotics I could see it as part of path optimization
+
+Tomorrow I will implement my first implementation based on pseudocode and create the first test for it 
