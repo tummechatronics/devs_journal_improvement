@@ -1,0 +1,18 @@
+[project]
+name = "python-devs-min-setup-vscode"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "lint>=1.2.1",
+    "ruff>=0.9.7",
+]
+
+[dependency-groups]
+dev = [
+    "matplotlib>=3.10.0",
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "pytest>=8.3.4",
+]

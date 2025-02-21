@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        //helpers for documentation or auto complete
+        "aaron-bond.better-comments",
+        "tamasfe.even-better-toml",
+        "yzhang.markdown-all-in-one",
+        "charliermarsh.ruff",
+        //relevant for python
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-pylance",
+        //visual modifications
+        "oderwat.indent-rainbow",
+        // git graph
+        "mhutchie.git-graph",
+    ]
+}
