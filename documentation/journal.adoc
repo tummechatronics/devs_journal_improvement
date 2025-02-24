@@ -119,3 +119,16 @@ BFS can be used to find the shortest path to a point. Supply chain there are alr
 In robotics I could see it as part of path optimization
 
 Tomorrow I will implement my first implementation based on pseudocode and create the first test for it 
+
+---
+
+## Day 2 24-02-2025
+
+### What I did
+
+today I expend around 2 hours working with the algorithm and a first implementation for a grid 
+
+### My Thoughts about it
+
+I underestimate the code for grid + algorithm and also trying to make it interactive. All at the same time was not the best idea (too many modifications at the same time).To avoid this tomorrow, I'll first define a few requirements for the grid (maze creator) and then design a simple architecture to code it faster.
+
