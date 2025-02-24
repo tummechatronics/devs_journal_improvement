@@ -5,6 +5,9 @@ I'll be writing my thoughts and what I learn during this process here ->  *xref:
 
 ## My Focus
 
+Inspiration ->  xref:https://roadmap.sh/ai-data-scientist[ai-data scientist]
+
+
 topics:
 
 * Data science,
