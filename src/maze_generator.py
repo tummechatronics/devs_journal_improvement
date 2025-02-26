@@ -1,52 +1,65 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from PIL import Image, ImageDraw
 
 
-def create_maze(maze_dim: int, *, blocked_positions: int = 0) -> tuple[np.ndarray, np.ndarray]:
+def create_maze(
+    maze_dim: int, *, blocked_positions: int = 1
+) -> tuple[np.array, np.array, tuple[int, int], tuple[int, int], list[tuple[int, int]]]:
     """Create an NxN maze with possible blocked positions
 
     Args:
         maze_dim (int): _description_
-        blocked_positions (int, optional): _description_. Defaults to 0.
+        blocked_positions (int, optional): _description_. Defaults to 1.
 
     Returns:
-        tuple[np.ndarray, np.ndarray]: _description_
+        tuple[maze_x_length,maze_y_length,tuple(random_start_point_xy),tuple(random_goal_point_xy),
+        random_blocks_point_flat_xy,]
     """
 
-    maze_length = np.arange(maze_dim**2, dtype=np.int64)
+    rng = np.random.default_rng()
+    #! we are creating points without checking if start,goal and block are the same point
+    # TODO: move out point generation out of the maze_creation method and set a guard to avoid problems with the points
+    random_start_point_xy, random_goal_point_xy = rng.integers(maze_dim, size=(2, 2))
+    random_blocks_point_xy = rng.integers(maze_dim, size=(2, blocked_positions))
+    random_blocks_point_flat_xy = [(x, y) for x, y in zip(random_blocks_point_xy[0], random_blocks_point_xy[1])]
+    maze_length = np.arange(maze_dim, step=1)
 
-    maze_x_length, maze_y_length = np.meshgrid(maze_length, maze_length)
+    maze_x_length, maze_y_length = np.meshgrid(maze_length, maze_length, indexing="xy")
 
-    return maze_x_length, maze_y_length
+    return (
+        maze_x_length,
+        maze_y_length,
+        tuple(random_start_point_xy),
+        tuple(random_goal_point_xy),
+        random_blocks_point_flat_xy,
+    )
 
 
-def plot_maze(maze_dim: int, *, blocked_positions: int = 0):
-    fig, ax = plt.subplots()
-    step_size = 1
-    ax.grid(True, which="both", linestyle="-", linewidth=0.5)
-    ax.set_xticks(range(0, maze_dim + 1, step_size))
-    ax.set_yticks(range(0, maze_dim + 1, step_size))
-    plt.axis([0, maze_dim, 0, maze_dim])
-    print(plt.axis)
+def plot_maze(
+    maze_x_length: np.array,
+    maze_y_length: np.array,
+    random_start_point_xy: tuple[int, int],
+    random_goal_point_xy: tuple[int, int],
+    random_blocks_point_flat_xy: list[tuple[int, int]],
+):
+    _, ax = plt.subplots()
+    # TODO: Improve the layout
+    ax.grid(True, which="both", linestyle="none")
+    plt.axis([-0.5, maze_x_length.max() + 1, -0.5, maze_y_length.max() + 1])
+    plt.plot(maze_x_length, maze_y_length, marker=".", color="w", linestyle="none")
+
+    print(
+        f"start point {random_start_point_xy}, goal point {random_goal_point_xy}\n blockpoints {random_blocks_point_flat_xy}"
+    )
+
+    plt.plot(*random_start_point_xy, marker="*", color="b")
+    plt.plot(*random_goal_point_xy, marker="s", color="r")
+    plt.plot(*zip(*random_blocks_point_flat_xy), marker="X", color="k", linestyle="none")
     plt.show()
 
 
-def draw_grid(maze_x_length: int, maze_y_length: int, step_count):
-    image = Image.new(mode="L", size=(maze_x_length, maze_y_length), color=255)
-    draw = ImageDraw.Draw(image)
-    step_size = maze_x_length // step_count
-    for x in range(0, maze_x_length, step_size):
-        draw.line([(x, 0), (x, maze_y_length)], fill=128)
-    for y in range(0, maze_y_length, step_size):
-        draw.line([(0, y), (maze_x_length, y)], fill=128)
-    del draw
-    return image
-
-
 if __name__ == "__main__":
-    xx, yy = create_maze(6)
+    maze_size = 6
+    xx, yy, start_point, goal_point, block_points = create_maze(maze_size, blocked_positions=int(maze_size / 2))
     # Example usage
-    plot_maze(6)
-    # grid_image = draw_grid(600, 600, 6)
-    # grid_image.show()
+    plot_maze(xx, yy, start_point, goal_point, block_points)
