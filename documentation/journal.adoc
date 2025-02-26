@@ -132,3 +132,20 @@ today I expend around 2 hours working with the algorithm and a first implementat
 
 I underestimate the code for grid + algorithm and also trying to make it interactive. All at the same time was not the best idea (too many modifications at the same time).To avoid this tomorrow, I'll first define a few requirements for the grid (maze creator) and then design a simple architecture to code it faster.
 
+## Day 3 26-02-2025
+
+### What I did
+
+today I expend around 3 hours working fixing the grid and creating the first Idea on how to implement the movement in the grid. The black x's are obstacles, the red square represents the goal and the blue star the starting point
+
+image::pictures/first_maze.png[maze_v01,480,320]
+
+
+### My Thoughts about it
+
+It was nice to revisit concepts about unpacking and how to implement everything a little bit nicer. I could use OOP for the maze and add some methods like update maze, create maze and so on. But until might be too much for only two functions.
+
+I've been also reading other books regarding algorithms and principle of data science. There is a lot to do and to improve. But after the maze generator I'll be developing the algos and making some benchmarking. 
+
+*I don't want and will not use any LLM at the moment to generate my code* Pen and paper is the way to go right now to design and to write my pseudo code
+
