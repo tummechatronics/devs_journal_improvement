@@ -59,6 +59,7 @@ def plot_maze(
 
 
 if __name__ == "__main__":
-    xx, yy, start_point, goal_point, block_points = create_maze(36, blocked_positions=int(36 / 2))
+    maze_size = 6
+    xx, yy, start_point, goal_point, block_points = create_maze(maze_size, blocked_positions=int(maze_size / 2))
     # Example usage
     plot_maze(xx, yy, start_point, goal_point, block_points)
