@@ -2,3 +2,4 @@
 *.python-version
 *.venv
 *.html
+src/__pycache__/*.pyc
