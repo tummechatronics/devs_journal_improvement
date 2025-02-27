@@ -2,9 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def _set_boundaries(
+    maze_dim_x: np.array,
+    maze_dim_y: np.array,
+):
+    boundaries = [
+        (maze_dim_x.min(), maze_dim_y.min()),
+        (maze_dim_x.min(), maze_dim_y.max()),
+        (maze_dim_x.max(), maze_dim_y.min()),
+        (maze_dim_x.max(), maze_dim_y.max()),
+    ]
+    return boundaries
+
+
 def create_maze(
     maze_dim: int, *, blocked_positions: int = 1
-) -> tuple[np.array, np.array, tuple[int, int], tuple[int, int], list[tuple[int, int]]]:
+) -> tuple[np.array, np.array, tuple[int, int], tuple[int, int], list[tuple[int, int]], list[tuple[int, int]]]:
     """Create an NxN maze with possible blocked positions
 
     Args:
@@ -25,13 +38,14 @@ def create_maze(
     maze_length = np.arange(maze_dim, step=1)
 
     maze_x_length, maze_y_length = np.meshgrid(maze_length, maze_length, indexing="xy")
-
+    boundaries = _set_boundaries(maze_x_length, maze_y_length)
     return (
         maze_x_length,
         maze_y_length,
         tuple(random_start_point_xy),
         tuple(random_goal_point_xy),
         random_blocks_point_flat_xy,
+        boundaries,
     )
 
 
@@ -41,21 +55,20 @@ def plot_maze(
     random_start_point_xy: tuple[int, int],
     random_goal_point_xy: tuple[int, int],
     random_blocks_point_flat_xy: list[tuple[int, int]],
+    *,
+    plot_result: list[tuple[int, int]] = None,
 ):
-    _, ax = plt.subplots()
+    fig, ax = plt.subplots()
     # TODO: Improve the layout
-    ax.grid(True, which="both", linestyle="none")
+    ax.grid(True, which="both")
     plt.axis([-0.5, maze_x_length.max() + 1, -0.5, maze_y_length.max() + 1])
     plt.plot(maze_x_length, maze_y_length, marker=".", color="w", linestyle="none")
-
-    print(
-        f"start point {random_start_point_xy}, goal point {random_goal_point_xy}\n blockpoints {random_blocks_point_flat_xy}"
-    )
-
+    if plot_result:
+        plt.plot(*zip(*plot_result), marker="*", color="b")
     plt.plot(*random_start_point_xy, marker="*", color="b")
     plt.plot(*random_goal_point_xy, marker="s", color="r")
     plt.plot(*zip(*random_blocks_point_flat_xy), marker="X", color="k", linestyle="none")
-    plt.show()
+    return plt, fig
 
 
 if __name__ == "__main__":
