@@ -3,12 +3,12 @@ from algorithms import search_bfs
 
 
 def main(maze_size: int, roadblocks: int):
-    xx, yy, start_point, goal_point, block_points = create_maze(
+    xx, yy, start_point, goal_point, block_points, boundaries = create_maze(
         maze_dim=maze_size, blocked_positions=roadblocks
     )
     visited_points: list = []
     print(f"{start_point}, {goal_point}")
-    path_to_goal = search_bfs([xx, yy, goal_point, block_points], start_point, visited_points)
+    path_to_goal = search_bfs([goal_point, block_points, boundaries], start_point, visited_points)
     print(path_to_goal)
     _, fig = plot_maze(xx, yy, start_point, goal_point, block_points, plot_result=path_to_goal)
     fig.savefig("final_result")
