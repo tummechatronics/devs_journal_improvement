@@ -41,21 +41,20 @@ def plot_maze(
     random_start_point_xy: tuple[int, int],
     random_goal_point_xy: tuple[int, int],
     random_blocks_point_flat_xy: list[tuple[int, int]],
+    *,
+    plot_result: list[tuple[int, int]] = None,
 ):
-    _, ax = plt.subplots()
+    fig, ax = plt.subplots()
     # TODO: Improve the layout
-    ax.grid(True, which="both", linestyle="none")
+    ax.grid(True, which="both")
     plt.axis([-0.5, maze_x_length.max() + 1, -0.5, maze_y_length.max() + 1])
     plt.plot(maze_x_length, maze_y_length, marker=".", color="w", linestyle="none")
-
-    print(
-        f"start point {random_start_point_xy}, goal point {random_goal_point_xy}\n blockpoints {random_blocks_point_flat_xy}"
-    )
-
+    if plot_result:
+        plt.plot(*zip(*plot_result), marker="*", color="b")
     plt.plot(*random_start_point_xy, marker="*", color="b")
     plt.plot(*random_goal_point_xy, marker="s", color="r")
     plt.plot(*zip(*random_blocks_point_flat_xy), marker="X", color="k", linestyle="none")
-    plt.show()
+    return plt, fig
 
 
 if __name__ == "__main__":
