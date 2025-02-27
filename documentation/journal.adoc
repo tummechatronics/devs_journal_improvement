@@ -151,6 +151,8 @@ I've been also reading other books regarding algorithms and principle of data sc
 
 ## Day 3 27-02-2025
 
+I spend around 3 hours working on this day
+
 ### What I did
 
 Now the algorithm is implemented and with plot maze I can do some tests for it.
@@ -160,4 +162,6 @@ image::pictures/bfs_algorith.gif[maze_v01,480,320]
 
 ### My Thoughts about it
 
-For a small 6x6 grid with 3 roadblocks the algo required 11 attempts to achieve the goal. For bigger mazes can be very slow. There are a few things that I can optimize in my code. Like the movement or the plotting tool of the maze. Also I shall remove the plot tool from the algo 
+For a small 6x6 grid with 3 roadblocks the algo required 11 attempts to achieve the goal. For bigger mazes can be very slow. There are a few things that I can optimize in my code. Like the movement or the plotting tool of the maze. Also I shall remove the plot tool from the algo.
+
+I would like to invest more time in the code quality. I'll focus first to deliver the other algos also make unit test 
