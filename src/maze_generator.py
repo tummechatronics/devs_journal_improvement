@@ -2,9 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+def _set_boundaries(
+    maze_dim_x: np.array,
+    maze_dim_y: np.array,
+):
+    boundaries = [
+        (maze_dim_x.min(), maze_dim_y.min()),
+        (maze_dim_x.min(), maze_dim_y.max()),
+        (maze_dim_x.max(), maze_dim_y.min()),
+        (maze_dim_x.max(), maze_dim_y.max()),
+    ]
+    return boundaries
+
+
 def create_maze(
     maze_dim: int, *, blocked_positions: int = 1
-) -> tuple[np.array, np.array, tuple[int, int], tuple[int, int], list[tuple[int, int]]]:
+) -> tuple[np.array, np.array, tuple[int, int], tuple[int, int], list[tuple[int, int]], list[tuple[int, int]]]:
     """Create an NxN maze with possible blocked positions
 
     Args:
@@ -25,13 +38,14 @@ def create_maze(
     maze_length = np.arange(maze_dim, step=1)
 
     maze_x_length, maze_y_length = np.meshgrid(maze_length, maze_length, indexing="xy")
-
+    boundaries = _set_boundaries(maze_x_length, maze_y_length)
     return (
         maze_x_length,
         maze_y_length,
         tuple(random_start_point_xy),
         tuple(random_goal_point_xy),
         random_blocks_point_flat_xy,
+        boundaries,
     )
 
 
