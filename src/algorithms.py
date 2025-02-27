@@ -16,15 +16,8 @@ def search_bfs(maze: list, current_pivot: tuple[int, int], visited_points: list)
     while q is not empty:    
     """
     # * INFO: this is actually something that shouldn't be part of the algorithm. but part of the maze creation:
-    # TODO: Refactor maze boundaries -> Shall be part of maze creation
-    maze_dim_x, maze_dim_y, goal_point, roadblocks = maze
+    goal_point, roadblocks, boundaries = maze
 
-    boundaries = [
-        (maze_dim_x.min(), maze_dim_y.min()),
-        (maze_dim_x.min(), maze_dim_y.max()),
-        (maze_dim_x.max(), maze_dim_y.min()),
-        (maze_dim_x.max(), maze_dim_y.max()),
-    ]
     q: list = []
     q.append(current_pivot)
     visited_points.append(current_pivot)
