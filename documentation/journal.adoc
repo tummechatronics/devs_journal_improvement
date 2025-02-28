@@ -9,6 +9,7 @@ Asciidoctor version: {asciidoctor-version}
 //Configuration stuff
 :source-highlighter: coderay
 :coderay-linenums-mode: inline
+:customcss: my-css.css
 
 I'm aiming with this journal not only to improve my knowledge about data structures and algorithm using python but also to better translate mathematical models like econometrics, and robotics. I'm gonna expend at least 4 hours 5 days per week between reading, coding and updating this journal
 
@@ -149,7 +150,7 @@ I've been also reading other books regarding algorithms and principle of data sc
 
 *I don't want and will not use any LLM at the moment to generate my code* Pen and paper is the way to go right now to design and to write my pseudo code
 
-## Day 3 27-02-2025
+## Day 4 27-02-2025
 
 I spend around 3 hours working on this day
 
@@ -165,3 +166,46 @@ image::pictures/bfs_algorith.gif[maze_v01,480,320]
 For a small 6x6 grid with 3 roadblocks the algo required 11 attempts to achieve the goal. For bigger mazes can be very slow. There are a few things that I can optimize in my code. Like the movement or the plotting tool of the maze. Also I shall remove the plot tool from the algo.
 
 I would like to invest more time in the code quality. I'll focus first to deliver the other algos also make unit test 
+
+
+## Day 5 28-02-2025
+
+
+### What I did
+
+dfs algo is implemented. Furthermore, I read Into about other graphs types:
+
+* Undirected
+* Directed
+* Disconnected
+* Acyclic
+* Complete
+* Complete bipartite
+* Weighted graph
+
+and other ways to represent them _incidence matrix_ or _adjaceny lists_
+
+image::pictures/dfs_algorith.png[maze_v02,480,320]
+
+
+
+#### Chapter 3 Intelligent Search
+
+Goals: 
+[.red.background]
+* Understanding and designing heuristics for guided search
+* Identifying problems suited to being solved with guided search approaches
+* Understanding and designing a guided search algorithm
+* Designing a search algorithm to play a two player game
+
+
+I start with the A* algorithm and will have to modify our move function for maze to take into account the costs of movement.
+
+
+### My Thoughts about it
+
+This can be used to optimize "routes" like for supply chains or to find connections between "nodes" depending on what you define as a node.
+
+Matrix representation is a good an easy way to understand dependencies. This is also a good way to implement these algorithms in system engineering or product development (search for dependencies)
+
+Overall it is clear that uninformed search are computational expensive. Therefore, it is important to choose a suitable algorithm for the problem (this requires experience if you are trying to analyze a technical problem)
