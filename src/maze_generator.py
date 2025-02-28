@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# TODO: refactor to be a maze script and just a generator
+
 
 def _set_boundaries(
     maze_dim_x: np.array,
