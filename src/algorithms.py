@@ -1,5 +1,8 @@
 #
 # ? I should move _check_point_inside_grid and _get_neighbors to the maze
+import numpy as np
+
+
 def _check_point_inside_grid(point, grid_boundaries) -> bool:
     """Check if a point is inside a rectangular grid boundary."""
     x_min = min(p[0] for p in grid_boundaries)
@@ -10,6 +13,18 @@ def _check_point_inside_grid(point, grid_boundaries) -> bool:
     x, y = point
 
     return True if x_min <= x <= x_max and y_min <= y <= y_max else False
+
+
+def _move_cost(point_origin, target_point):
+    return 5 if target_point[1] > point_origin[1] or target_point[1] < point_origin[1] else 1
+
+
+def _calculate_cost(point_origin, target_point) -> np.float64:
+    distance_to_root = np.linalg.norm(np.array(point_origin) - np.array(target_point))
+    cost_to_move = _move_cost(point_origin, target_point)
+    return distance_to_root + cost_to_move
+
+    ...
 
 
 def _get_neighbors(current_pivot: tuple[int, int], roadblocks: list[tuple[int, int]], boundaries) -> list[int]:
@@ -91,6 +106,26 @@ def search_dfs(maze: list, root_point: tuple[int, int], visited_points: list) ->
     return visited_points, attempt_stack
 
 
-def search_A_start():
+def search_A_start(maze: list, root_point: tuple[int, int], visited_points: list):
     # TODO: to be implemented
-    ...
+    stack: list = []
+    stack.append(root_point)
+    goal_point, roadblocks, boundaries = maze
+    parent_map = {}  # Dictionary to store parent relationships
+    cost_of_movement: list = []
+    while stack:
+        current_point = stack.pop()
+        if current_point not in visited_points:
+            visited_points.append(current_point)
+            if current_point == goal_point:
+                print(parent_map)  # Store parent reference
+                return visited_points
+            else:
+                neighbors = _get_neighbors(current_point, roadblocks, boundaries)
+                for neighbor in neighbors:
+                    parent_map[neighbor] = current_point  # Store parent reference
+                    cost_of_movement.append(_calculate_cost(current_point, neighbor))
+                    stack.append(neighbor)
+                stack = [stack for stack, _ in sorted(zip(stack, cost_of_movement))]
+
+    return "no path to goal"
