@@ -201,6 +201,8 @@ Goals:
 
 I start with the A* algorithm and will have to modify our move function for maze to take into account the costs of movement.
 
+image::pictures/dfs_algorith.png[maze_v02,480,320]
+
 
 ### My Thoughts about it
 
@@ -209,3 +211,15 @@ This can be used to optimize "routes" like for supply chains or to find connecti
 Matrix representation is a good an easy way to understand dependencies. This is also a good way to implement these algorithms in system engineering or product development (search for dependencies)
 
 Overall it is clear that uninformed search are computational expensive. Therefore, it is important to choose a suitable algorithm for the problem (this requires experience if you are trying to analyze a technical problem)
+
+## Day 6 03-03-2025
+
+### What I did
+
+I implemented A*star algorithm. Furthermore, I check min max algo and start chapter 4 with evolutionary algorithm. This chapter requires from my side a little bit more energy an attention to best understand it. 
+
+image::pictures/a_star_algo.png[maze_v02,480,320]
+
+### My Thoughts about it
+
+4 hours coding + reading is exhausting. To make something different I'll work in other stuff as well for instance Kaggle. This way should be everything a little bit less monotonic
