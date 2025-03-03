@@ -220,6 +220,8 @@ I implemented A*star algorithm. Furthermore, I check min max algo and start chap
 
 image::pictures/a_star_algo.png[maze_v02,480,320]
 
+I'm using Kaggle to practice and refresh stuff like SQL, and ML at the moment I started with the courses and I'll be adding more stuff. My Idea is to participate in a challenge 
+
 ### My Thoughts about it
 
-4 hours coding + reading is exhausting. To make something different I'll work in other stuff as well for instance Kaggle. This way should be everything a little bit less monotonic
+4 hours coding + reading is exhausting. To make something different I'll work in other stuff as well for instance Kaggle. This way should be everything a little bit less monotonic.
